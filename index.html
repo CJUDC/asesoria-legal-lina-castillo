@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lina Fernanda Castillo | Abogada · Asesoría Legal</title>
+<meta name="description" content="Lina Fernanda Castillo, abogada. Asesoría legal personalizada, clara y confiable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1b2d; --navy-2:#16263d; --gold:#c9a45c; --gold-2:#e3c88f;
+  --cream:#f8f4ec; --text:#2b2f36; --muted:#6b7280; --white:#fff;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--cream);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,92%);margin:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--navy)}
+.eyebrow{letter-spacing:.25em;text-transform:uppercase;font-size:.75rem;color:var(--gold);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:500;font-size:.95rem;transition:.3s;cursor:pointer;border:1px solid transparent}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--navy);box-shadow:0 10px 30px -10px rgba(201,164,92,.7)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(201,164,92,.9)}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:.35s;padding:1.3rem 0}
+nav.scrolled{background:rgba(15,27,45,.92);backdrop-filter:blur(10px);padding:.8rem 0;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.75rem;color:#fff}
+.logo-mark{width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);color:var(--gold);font-size:1.2rem;font-weight:700}
+.logo span{font-family:var(--serif);font-size:1.3rem;letter-spacing:.02em}
+.logo small{display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.3em;color:var(--gold-2);text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.9rem;transition:.2s}
+.nav-links a:hover{color:var(--gold-2)}
+.menu-btn{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;background:
+  radial-gradient(1200px 600px at 85% 20%,rgba(201,164,92,.18),transparent 60%),
+  linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,#0b1422 100%);
+  color:#fff;display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 0 5rem}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(to bottom,#000,transparent)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero h1{color:#fff;font-size:clamp(2.8rem,6vw,5rem);margin:1rem 0 1.4rem}
+.hero h1 em{color:var(--gold-2);font-style:italic}
+.hero p.lead{color:rgba(255,255,255,.75);font-size:1.12rem;max-width:560px;margin-bottom:2.4rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{display:flex;gap:2.8rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+.hero-stats strong{font-family:var(--serif);font-size:2.4rem;color:var(--gold-2);display:block;line-height:1}
+.hero-stats span{font-size:.8rem;color:rgba(255,255,255,.6);letter-spacing:.05em}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:220px 220px 24px 24px;background:
+  linear-gradient(180deg,rgba(201,164,92,.25),rgba(15,27,45,.2)),
+  linear-gradient(135deg,#223754,#132238);border:1px solid rgba(201,164,92,.4);display:grid;place-items:center;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.portrait::before{content:"";position:absolute;inset:14px;border-radius:210px 210px 16px 16px;border:1px solid rgba(227,200,143,.25)}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.portrait::before{z-index:1}
+.monogram{font-family:var(--serif);font-size:8rem;color:var(--gold-2);font-style:italic;opacity:.9}
+.scales{position:absolute;bottom:2rem;width:70px;opacity:.6}
+.badge{position:absolute;left:-2rem;bottom:3rem;background:#fff;color:var(--navy);padding:1rem 1.3rem;border-radius:16px;display:flex;gap:.8rem;align-items:center;box-shadow:0 20px 40px -15px rgba(0,0,0,.5);animation:float 5s ease-in-out infinite}
+.badge .ic{width:40px;height:40px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--gold)}
+.badge b{display:block;font-size:.95rem}.badge small{color:var(--muted);font-size:.75rem}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* SECTIONS */
+section{padding:7rem 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto 4rem}
+.section-head h2{font-size:clamp(2.2rem,4vw,3.2rem);margin:.8rem 0 1rem}
+.section-head p{color:var(--muted)}
+.divider{width:60px;height:2px;background:var(--gold);margin:1.2rem auto 0}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-media{position:relative;padding-bottom:5rem}
+.about-media img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:60% 30%;border-radius:24px;display:block;box-shadow:0 40px 80px -40px rgba(15,27,45,.5)}
+.about-media::before{content:"";position:absolute;top:-18px;left:-18px;width:55%;height:60%;border:1px solid var(--gold);border-radius:24px;z-index:-1}
+.about-card{background:var(--navy);color:#fff;border-radius:20px;padding:2rem 2.2rem;position:absolute;overflow:hidden;right:-1.5rem;bottom:0;width:78%;box-shadow:0 30px 60px -25px rgba(0,0,0,.55)}
+.about-card::after{content:"§";position:absolute;right:-5px;bottom:-50px;font-family:var(--serif);font-size:12rem;color:rgba(201,164,92,.08)}
+.about-card blockquote{font-family:var(--serif);font-size:1.45rem;font-style:italic;line-height:1.35;color:var(--gold-2)}
+.about-card cite{display:block;margin-top:1.5rem;font-style:normal;font-size:.85rem;color:rgba(255,255,255,.6);letter-spacing:.1em}
+.about h2{font-size:clamp(2.2rem,4vw,3rem);margin:.8rem 0 1.4rem}
+.about p{color:var(--muted);margin-bottom:1.1rem}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.values div{display:flex;gap:.7rem;align-items:center;font-weight:500;color:var(--navy);font-size:.95rem}
+.values i{width:26px;height:26px;border-radius:50%;background:rgba(201,164,92,.15);color:var(--gold);display:grid;place-items:center;font-style:normal;font-size:.8rem}
+
+/* SERVICES */
+.services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.service{padding:2.4rem;border-radius:20px;border:1px solid #eee7da;background:var(--cream);transition:.35s;position:relative;overflow:hidden}
+.service::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--gold);transition:.4s}
+.service:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(15,27,45,.35);background:#fff}
+.service:hover::before{width:100%}
+.service .icon{width:58px;height:58px;border-radius:16px;background:var(--navy);display:grid;place-items:center;margin-bottom:1.5rem}
+.service .icon svg{width:28px;height:28px;stroke:var(--gold-2)}
+.service h3{font-size:1.6rem;margin-bottom:.7rem}
+.service p{color:var(--muted);font-size:.95rem}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;counter-reset:step}
+.step{text-align:center;position:relative}
+.step .num{width:72px;height:72px;margin:0 auto 1.4rem;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);font-size:1.8rem;color:var(--navy);background:#fff;position:relative;z-index:1}
+.step:not(:last-child)::after{content:"";position:absolute;top:36px;left:calc(50% + 50px);width:calc(100% - 100px);border-top:1px dashed var(--gold)}
+.step h3{font-size:1.4rem;margin-bottom:.5rem}
+.step p{color:var(--muted);font-size:.92rem}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--navy);color:#fff}
+.testimonials h2{color:#fff}
+.testimonials .section-head p{color:rgba(255,255,255,.6)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.t-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2.2rem}
+.stars{color:var(--gold);letter-spacing:.2em;margin-bottom:1rem}
+.t-card p{color:rgba(255,255,255,.8);font-style:italic;margin-bottom:1.5rem}
+.t-author{display:flex;gap:.8rem;align-items:center}
+.t-author .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--navy);display:grid;place-items:center;font-weight:600}
+.t-author b{display:block;font-size:.95rem}.t-author small{color:rgba(255,255,255,.5)}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:.9fr 1.1fr;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(15,27,45,.35)}
+.contact-info{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;padding:3.5rem}
+.contact-info h2{color:#fff;font-size:2.4rem;margin:.8rem 0 1rem}
+.contact-info p{color:rgba(255,255,255,.7)}
+.info-list{margin-top:2.5rem;display:grid;gap:1.4rem}
+.info-list a,.info-list div{display:flex;gap:1rem;align-items:center}
+.info-list .ic{width:46px;height:46px;border-radius:12px;background:rgba(201,164,92,.15);display:grid;place-items:center;flex-shrink:0}
+.info-list svg{width:20px;height:20px;stroke:var(--gold-2)}
+.info-list small{display:block;color:rgba(255,255,255,.5);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+form{padding:3.5rem;display:grid;gap:1.2rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+label{font-size:.8rem;font-weight:500;color:var(--navy);display:block;margin-bottom:.4rem}
+input,select,textarea{width:100%;padding:.9rem 1rem;border:1px solid #e5dfd3;border-radius:12px;font:inherit;background:var(--cream);transition:.2s;color:var(--text)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(201,164,92,.15)}
+textarea{min-height:130px;resize:vertical}
+.form-msg{display:none;padding:1rem;border-radius:12px;background:#ecf7ef;color:#1f6f3f;font-size:.9rem}
+
+/* FOOTER */
+footer{background:#0b1422;color:rgba(255,255,255,.6);padding:3rem 0;font-size:.88rem}
+footer .ig{color:var(--gold-2)}footer .ig:hover{text-decoration:underline}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+
+.wa{position:fixed;right:1.5rem;bottom:1.5rem;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.5);z-index:60;transition:.3s}
+.wa:hover{transform:scale(1.08)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:960px){
+  .hero-grid,.about-grid,.contact-wrap{grid-template-columns:1fr}
+  .portrait{max-width:380px;margin:auto}
+  .badge{left:0}
+  .about-media{padding-bottom:0}
+  .about-card{position:relative;right:auto;width:auto;margin:-3rem 1rem 0}
+  .services-grid,.t-grid{grid-template-columns:1fr 1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .nav-links{position:fixed;inset:70px 4% auto 4%;flex-direction:column;background:var(--navy);padding:2rem;border-radius:16px;display:none}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+}
+@media(max-width:600px){
+  .services-grid,.t-grid,.process-grid,.row,.values{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  form,.contact-info{padding:2rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#inicio" class="logo">
+      <div class="logo-mark">LC</div>
+      <div><span>Lina F. Castillo</span><small>Abogada</small></div>
+    </a>
+    <button class="menu-btn" aria-label="Menú" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#contacto" class="btn btn-gold" style="padding:.65rem 1.4rem">Agendar consulta</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Asesoría Legal Profesional</span>
+      <h1>Defendiendo sus derechos con <em>integridad</em> y cercanía.</h1>
+      <p class="lead">Soy Lina Fernanda Castillo, abogada. Le acompaño a tomar decisiones legales seguras, con explicaciones claras y una estrategia pensada para usted.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-gold">Agendar consulta &rarr;</a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>100%</strong><span>Atención personalizada</span></div>
+        <div><strong>24h</strong><span>Tiempo de respuesta</span></div>
+        <div><strong>Online</strong><span>y presencial</span></div>
+      </div>
+    </div>
+    <div class="reveal" style="position:relative">
+      <div class="portrait">
+        <img src="img/lina-retrato.jpg" alt="Lina Fernanda Castillo, abogada, en su oficina">
+      </div>
+      <div class="badge">
+        <div class="ic">&#9878;</div>
+        <div><b>Consulta inicial</b><small>Evaluamos su caso</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="sobre-mi">
+  <div class="container about-grid">
+    <div class="about-media reveal">
+      <img src="img/lina-oficina.jpg" alt="Lina Fernanda Castillo en su despacho">
+      <div class="about-card">
+      <span class="eyebrow">Mi compromiso</span>
+      <blockquote style="margin-top:1rem">“La justicia comienza cuando cada persona entiende sus derechos y cuenta con alguien que los defienda.”</blockquote>
+      <cite>— LINA FERNANDA CASTILLO</cite>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Sobre mí</span>
+      <h2>Una abogada que escucha, explica y resuelve.</h2>
+      <p>Creo que el derecho debe ser accesible. Por eso ofrezco una asesoría legal honesta, sin tecnicismos innecesarios, donde usted entiende cada paso de su proceso.</p>
+      <p>Trabajo con personas, familias y emprendedores que buscan soluciones reales, con la tranquilidad de estar en manos responsables.</p>
+      <div class="values">
+        <div><i>✓</i>Confidencialidad total</div>
+        <div><i>✓</i>Ética profesional</div>
+        <div><i>✓</i>Comunicación clara</div>
+        <div><i>✓</i>Enfoque en resultados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2>Asesoría legal a su medida</h2>
+      <p>Soluciones jurídicas preventivas y de acompañamiento para cada etapa de su vida personal y profesional.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3v18M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></svg></div><h3>Asesoría Legal General</h3><p>Orientación jurídica clara para entender su situación y conocer sus opciones antes de actuar.</p></div>
+      <div class="service reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 21v-6h6v6"/></svg></div><h3>Derecho de Familia</h3><p>Divorcios, custodia, alimentos, sucesiones y acuerdos familiares con sensibilidad y firmeza.</p></div>
+      <div class="service reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div><h3>Derecho Laboral</h3><p>Contratos, despidos, liquidaciones y reclamaciones laborales para trabajadores y empleadores.</p></div>
+      <div class="service reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div><h3>Contratos y Documentos</h3><p>Redacción y revisión de contratos, poderes, promesas de compraventa y documentos legales.</p></div>
+      <div class="service reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-5h6v5"/></svg></div><h3>Derecho Civil</h3><p>Conflictos de propiedad, arrendamientos, responsabilidad civil y cobro de obligaciones.</p></div>
+      <div class="service reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Derechos Fundamentales</h3><p>Acciones de tutela, derechos de petición y defensa de sus derechos frente a entidades.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo trabajo</span>
+      <h2>Un proceso simple y transparente</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="process-grid">
+      <div class="step reveal"><div class="num">01</div><h3>Contacto</h3><p>Me escribe y agendamos una cita en el horario que le convenga.</p></div>
+      <div class="step reveal"><div class="num">02</div><h3>Diagnóstico</h3><p>Escucho su caso y analizo documentos y alternativas legales.</p></div>
+      <div class="step reveal"><div class="num">03</div><h3>Estrategia</h3><p>Le presento un plan claro, con tiempos y honorarios transparentes.</p></div>
+      <div class="step reveal"><div class="num">04</div><h3>Acompañamiento</h3><p>Le represento y mantengo informado hasta la solución.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Testimonios</span>
+      <h2>La confianza de mis clientes</h2>
+      <p>Lo que dicen quienes ya han recibido mi asesoría.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal"><div class="stars">★★★★★</div><p>“Me explicó todo con paciencia y claridad. Por fin entendí mi situación y resolvimos el caso rápidamente.”</p><div class="t-author"><div class="av">MR</div><div><b>María R.</b><small>Derecho de Familia</small></div></div></div>
+      <div class="t-card reveal"><div class="stars">★★★★★</div><p>“Profesional, cercana y muy comprometida. Revisó mis contratos y me evitó problemas serios.”</p><div class="t-author"><div class="av">JP</div><div><b>Jorge P.</b><small>Contratos</small></div></div></div>
+      <div class="t-card reveal"><div class="stars">★★★★★</div><p>“Gracias a su asesoría logré el pago de mi liquidación. La recomiendo totalmente.”</p><div class="t-author"><div class="av">AC</div><div><b>Andrea C.</b><small>Derecho Laboral</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <div class="contact-info">
+        <span class="eyebrow">Contacto</span>
+        <h2>Hablemos de su caso</h2>
+        <p>Cuénteme brevemente su situación y le responderé en menos de 24 horas.</p>
+        <div class="info-list">
+          <a href="tel:+573005394298"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></div><div><small>Teléfono</small>+57 300 539 4298</div></a>
+          <a href="mailto:asesorialegalctg@gmail.com"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div><div><small>Correo</small>asesorialegalctg@gmail.com</div></a>
+          <a href="https://www.instagram.com/asesorialegalctg/" target="_blank" rel="noopener"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></div><div><small>Instagram</small>@asesorialegalctg</div></a>
+          <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><small>Ubicación</small>Cartagena, Colombia</div></div>
+          <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><small>Horario</small>Lun – Vie · 8:00 a.m. – 6:00 p.m.</div></div>
+        </div>
+      </div>
+      <form id="form">
+        <div class="row">
+          <div><label for="n">Nombre completo</label><input id="n" required placeholder="Su nombre"></div>
+          <div><label for="t">Teléfono</label><input id="t" type="tel" required placeholder="+57 ..."></div>
+        </div>
+        <div><label for="e">Correo electrónico</label><input id="e" type="email" required placeholder="correo@ejemplo.com"></div>
+        <div><label for="s">Área de interés</label>
+          <select id="s"><option>Asesoría Legal General</option><option>Derecho de Familia</option><option>Derecho Laboral</option><option>Contratos y Documentos</option><option>Derecho Civil</option><option>Derechos Fundamentales</option></select></div>
+        <div><label for="m">Cuénteme su caso</label><textarea id="m" required placeholder="Describa brevemente su situación..."></textarea></div>
+        <button class="btn btn-gold" type="submit" style="justify-content:center">Enviar solicitud &rarr;</button>
+        <div class="form-msg" id="msg">¡Gracias! Su mensaje fue recibido. Le contactaré muy pronto.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <a href="#inicio" class="logo"><div class="logo-mark">LC</div><div><span>Lina Fernanda Castillo</span><small>Abogada · Asesoría Legal</small></div></a>
+    <a href="https://www.instagram.com/asesorialegalctg/" target="_blank" rel="noopener" class="ig">Instagram · @asesorialegalctg</a>
+    <p>© <span id="y"></span> Lina Fernanda Castillo. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/573005394298?text=Hola%20Dra.%20Lina%2C%20quisiera%20una%20asesor%C3%ADa%20legal" target="_blank" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/></svg>
+</a>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.1+'s';io.observe(el)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.onclick=()=>document.querySelector('.nav-links').classList.remove('open'));
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();document.getElementById('msg').style.display='block';e.target.reset();});
+</script>
+</body>
+</html>
