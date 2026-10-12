@@ -134,6 +134,18 @@ mal. usa la skill de impeccable si es necesario." → la skill `impeccable` NO e
 (registro `.atl/skill-registry.md` y búsqueda en `~/.pi`, `~/.config/opencode/skills`, `~/.claude/skills`:
 sin coincidencias), así que el repaso se hizo a mano. Ver T7.
 
+L12 (decisión del usuario, 2026-10-12): el candidato `sha256:2d1704d7…` (rango `main..HEAD` de esta rama,
+base `b6687ed`, con `committed-only`) queda **explícitamente sin revisar**. Motivo: el START nativo no puede
+congelar evidencia en esta carpeta — `Windows DACL validation failed: protection` — porque el repo vive
+dentro de OneDrive (atributo `ReparsePoint` en la carpeta del proyecto) y su ACL hereda
+`Everyone:(I)(CI)(DENY)(DC)`; el inventario nativo confirmó que el START fallido **no creó linaje**
+(`lineages: 0`, sin autoridad quemada). El `assess` nativo ya había informado `risk: medium`,
+`reviewDue: false` (`under_budget`) e `independentVerifier: false`, así que dejar este candidato sin revisar
+coincide con el propio gate de riesgo del paquete. Disposición elegida por el usuario entre cuatro opciones
+(dejar sin revisar · revisar desde un clon fuera de OneDrive · apagar el switch del clon · ajustar ACLs).
+El `STATUS` de reconciliación declaró una sola acción ofrecida: arrancar con `base-ref` explícito
+(`empty_candidate_base_ref_required`), que es la ruta que falló por la precondición de Windows.
+
 L11 (pedido del usuario, verbatim): "mira donde que quienes hacen la reseña, no están iguales, se encuentra
 en distinto niveles, tamaños." → T8 (avatares elípticos, banda 961–1049 desalineada, huérfana 2+1 en 601–960).
 
