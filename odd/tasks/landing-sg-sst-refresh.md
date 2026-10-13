@@ -1,8 +1,9 @@
 # landing-sg-sst-refresh
 
 Reposicionamiento de la landing de Lina Fernanda Castillo hacia SG-SST: encabezado, "Sobre mí", servicios,
-proceso formal, testimonios por caso y visibilidad bilingüe. Un solo archivo: `index.html` (sitio estático,
-sin build ni tests; servidor local `python -m http.server 8080`).
+proceso formal, testimonios por caso, visibilidad bilingüe, formulario de contacto y publicación.
+El sitio vive en `docs/` (`index.html` + `privacidad.html` + `docs/img/`): sitio estático, sin build ni tests.
+Verificación local: `python -m http.server 8080` sirviendo `docs/`.
 
 ## Specs
 
@@ -43,6 +44,24 @@ S9 · Testimonios (3, con etiqueta de caso + estrellas + cita + atribución):
 S10 · Servicio bilingüe visible: franja fija arriba del nav con
 `🌐 Legal Services Available in English & Spanish` + `Atención Legal Bilingüe`; y la línea
 `Servicios de asesoría legal integral disponibles en español e inglés.` en la sección de contacto y en el footer.
+
+S11 · Formulario de contacto: se entrega por correo con FormSubmit (sin backend propio). `action` =
+`https://formsubmit.co/cjcastillomendoza@gmail.com` → el JS deriva de ese mismo `action` el endpoint AJAX
+(`/formsubmit.co/ajax/`), así que cambiar ese correo es el **único** cambio necesario para redirigir los
+envíos. Campos `nombre`, `telefono`, `email` y `caso` con `required`, más el `<select>` `area` (sin `required`:
+siempre envía una opción); ocultos `_subject` =
+`Nueva consulta desde la landing — asesorialegalctg`, `_template` = `table` y honeypot `_honey`.
+Envío por `fetch` con `Accept: application/json`; el veredicto real está en el campo `success` de la respuesta
+porque FormSubmit devuelve HTTP 200 incluso cuando rechaza. Mensaje de éxito:
+`¡Gracias! Su mensaje fue recibido. Le contactaré muy pronto.` Mensaje de error, con salidas alternas:
+`No pudimos enviar su solicitud. Escríbanos por WhatsApp o al correo asesorialegalctg@gmail.com y le responderé muy pronto.`
+
+S12 · Autorización de datos y página de privacidad: checkbox `consentimiento` `required` con `value`
+`Sí, autorizo el tratamiento de mis datos personales` y etiqueta
+`Autorizo el tratamiento de mis datos personales conforme a la Política de Privacidad (Ley 1581 de 2012).`,
+enlazando `privacidad.html` (mismo enlace en el footer). `docs/privacidad.html` (title
+`Política de Privacidad | Lina Fernanda Castillo · Abogada`) tiene 11 secciones numeradas y un
+`← Volver al inicio` hacia `index.html`.
 
 ## Tasks
 
@@ -127,6 +146,19 @@ móvil sin enlaces tapados en 4 anchos y 2 estados de scroll.
 Nota menor: a ≤~340px el descriptor de la tarjeta 3 ocupa 3 líneas (apilado, sin vecina contra la que
 desalinearse; sin recorte).
 
+T9 — L13/L14: el formulario de contacto entrega por correo con FormSubmit, sin backend. Route: inline.
+Estado: **cerrada** — commits `fed7904` (form AJAX en `index.html` + `privacidad.html`) en la rama
+`feat/formsubmit-contact-form`, PR #2 mergeado en `main` (`130181f`). Evidencia end-to-end la aportó el
+usuario: recibió el correo de activación de FormSubmit, lo activó y confirmó que el formulario ya funciona.
+**Pendiente del usuario**: el destino es provisional (`cjcastillomendoza@gmail.com`); cuando tenga acceso al
+correo del negocio, el cambio es una línea (el `action` del form) y nada más.
+
+T10 — L15: publicación del sitio en GitHub Pages. Route: inline. Estado: **cerrada** — commit `5097de0`: el
+sitio se movió a `docs/` (`index.html`, `privacidad.html`, `docs/img/`, `docs/.nojekyll`) para publicar sólo
+el sitio y no el resto del repo. Pages: source `main` / `docs`, `build_type: legacy`, `status: built`, HTTPS
+forzado → https://cjudc.github.io/asesoria-legal-lina-castillo/. Verificado desde afuera: HTTP 200 y hash
+CRLF-normalizado idéntico al `docs/` local (`index.html` `5957beed…`, `privacidad.html` `62870246849e…`).
+
 ## Log
 
 L8 (pedido del usuario, verbatim): "Reevalúa el frontend completamente, hay ciertos detalles que un poco
@@ -200,3 +232,35 @@ reveal congelado en su estado final, `captureBeyondViewport`). Dos ajustes salie
 object-position:50% 50%`: el retrato vertical cropeado a 3:2 dejaba la cara tapada por la tarjeta navy
 superpuesta, que cubre el 45% inferior del bloque; (g) S7 quedó con 6 tarjetas (3×2) y el título largo de
 SG-SST envuelve en 3 líneas sin romper la retícula. Ningún aspecto fuera del archivo `index.html` fue tocado.
+
+L13 (pregunta del usuario, verbatim): "una pregunta, normal mente el formulario de una landing, a donde
+debería enviar los datos, envía un correo o como?" → para un sitio estático sin backend, los datos se mandan
+a un correo por relay (FormSubmit).
+
+L14 (pedidos y confirmaciones del usuario, verbatim): "vale implementalo, usando odd." · "no tengo acceso a
+ese correo ahora mmismo, puedes hacerlo momentaneamente con este cjcastillomendoza@gmail.com?" · "vale ya
+recibí el correo y lo activé, que procede?" · "vale parcece que ya funciona, primero llego el de avtivación,
+lo activé y llegó." → T9: correo destino provisional `cjcastillomendoza@gmail.com` (FormSubmit exige confirmar
+la dirección antes de entregar), entrega end-to-end confirmada por el usuario. **Sigue pendiente** reemplazar
+esa dirección por la del negocio cuando el usuario tenga acceso (una línea: el `action` del form).
+
+L15 (pedido del usuario, verbatim): "vale parcece que ya funciona, primero llego el de avtivación, lo activé
+y llegó. con respecto al deployment dime como lo hacemos en pages." → T10: el repo publica sólo el sitio
+desde `docs/` (Pages legacy build, rama `main`, carpeta `/docs`).
+
+L16 (cierre de L9 por reconciliación, 2026-10-13): verificado en `docs/index.html` que el texto de la tarjeta
+SG-SST **ya es S7 verbatim** ("Diseño, implementación, auditoría y adecuación normativa del SG-SST para PYMES
+y microempresas. Garantizamos el cumplimiento de la norma colombiana, previniendo sanciones laborales y
+protegiendo el bienestar de su equipo de trabajo."), así que L9 no requiere cambios de copy. No se pudo
+determinar en qué commit se corrigió: el tramo de form, `docs/` y deploy no se registró en este doc cuando
+ocurrió, y esto lo reconstruye a posteriori.
+
+L17 (decisión del implementador, para revisar): `docs/privacidad.html` (Política de Privacidad y Tratamiento
+de Datos Personales, Ley 1581 de 2012, 11 secciones) lo agregó la implementación del formulario, no un pedido
+explícito del usuario: respalda la casilla de autorización y el fallback cuando no hay backend. Es un archivo
+independiente y reversible: si el usuario prefiere otro texto de política, se reemplaza sólo ese archivo.
+
+L18 (reconstrucción de tracking, 2026-10-13): el trabajo del formulario, `privacidad.html` y el deploy en
+Pages se hizo en la sesión anterior sin anotarlo en este doc; T9, T10, S11, S12 y L13–L17 se agregan ahora,
+leyendo el código y lo publicado, para que el feature doc no quede mintiendo por omisión. No se reescribió
+nada del resto del doc.
