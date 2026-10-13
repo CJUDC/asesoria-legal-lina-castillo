@@ -46,7 +46,8 @@ S10 · Servicio bilingüe visible: franja fija arriba del nav con
 `Servicios de asesoría legal integral disponibles en español e inglés.` en la sección de contacto y en el footer.
 
 S11 · Formulario de contacto: se entrega por correo con FormSubmit (sin backend propio). `action` =
-`https://formsubmit.co/cjcastillomendoza@gmail.com` → el JS deriva de ese mismo `action` el endpoint AJAX
+`https://formsubmit.co/asesorialegalctg@gmail.com` (L19: destino definitivo, la misma casilla que ya
+muestran la tarjeta de contacto y la política de privacidad) → el JS deriva de ese mismo `action` el endpoint AJAX
 (`/formsubmit.co/ajax/`), así que cambiar ese correo es el **único** cambio necesario para redirigir los
 envíos. Campos `nombre`, `telefono`, `email` y `caso` con `required`, más el `<select>` `area` (sin `required`:
 siempre envía una opción); ocultos `_subject` =
@@ -150,8 +151,9 @@ T9 — L13/L14: el formulario de contacto entrega por correo con FormSubmit, sin
 Estado: **cerrada** — commits `fed7904` (form AJAX en `index.html` + `privacidad.html`) en la rama
 `feat/formsubmit-contact-form`, PR #2 mergeado en `main` (`130181f`). Evidencia end-to-end la aportó el
 usuario: recibió el correo de activación de FormSubmit, lo activó y confirmó que el formulario ya funciona.
-**Pendiente del usuario**: el destino es provisional (`cjcastillomendoza@gmail.com`); cuando tenga acceso al
-correo del negocio, el cambio es una línea (el `action` del form) y nada más.
+**Pendiente del usuario**: el destino pasó a `asesorialegalctg@gmail.com` con L19 (una línea, el `action` del
+form); falta **activar esa casilla en FormSubmit** — el primer envío real dispara el correo de activación y
+hasta activarla el formulario no entrega consultas.
 
 T10 — L15: publicación del sitio en GitHub Pages. Route: inline. Estado: **cerrada** — commit `5097de0`: el
 sitio se movió a `docs/` (`index.html`, `privacidad.html`, `docs/img/`, `docs/.nojekyll`) para publicar sólo
@@ -264,3 +266,12 @@ L18 (reconstrucción de tracking, 2026-10-13): el trabajo del formulario, `priva
 Pages se hizo en la sesión anterior sin anotarlo en este doc; T9, T10, S11, S12 y L13–L17 se agregan ahora,
 leyendo el código y lo publicado, para que el feature doc no quede mintiendo por omisión. No se reescribió
 nada del resto del doc.
+
+L19 (pedido del usuario, verbatim): "cambialo a asesorialegalctg@gmail.com" → el destino del formulario pasa
+de `cjcastillomendoza@gmail.com` (provisional, L14) a `asesorialegalctg@gmail.com`, que es la casilla que ya
+figuraban el contacto, el mensaje de error y `privacidad.html`. Cambia una sola línea: el `action` del form
+de `docs/index.html` (el endpoint AJAX se deriva de ahí). Verificado sobre la página servida: el `action`
+es el nuevo y la derivación da `https://formsubmit.co/ajax/asesorialegalctg@gmail.com`. **Pendiente**:
+activar la casilla en FormSubmit (FormSubmit exige confirmar cada dirección nueva; el primer envío real
+dispara ese correo). Mientras no esté activada, el formulario no entrega y la página muestra el mensaje de
+error con la salida por WhatsApp.
